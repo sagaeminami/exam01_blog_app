@@ -1,24 +1,21 @@
-<h1>ブログ一覧</h1>
 
-<p><%= notice %></p>
+<div class="container">
+  <article class-"tweet row">
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete,data: {confirm: '本当に削除していいですか？'} %></td>
-  </tr>
-<% end %>
-</table>
-
-<br>
-
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+      <% @blogs.each do |blog| %>
+        <div class-"blog-panel col-xs-12 col-md-4 col-md-offset-4">
+          <h2><%= blog.title %></h2>
+          <h3><%= blog.content %></h3>
+          <p><%= blog.created_at %></p>
+          <p><%= blog.user.name %></p>
+                    <% if blog.user_id == current_user.id %>
+                      <%= link_to 'Show', blog_path(blog.id)  %> |
+                      <%= link_to 'Edit', edit_blog_path(blog.id)%> |
+                      <%= link_to 'Destroy', blog_path(blog.id),method: :delete, data: { confirm: 'Are you sure?' }%>
+                    <% else %>
+                      <%= link_to 'Show', blog_path(blog.id)  %>
+                    <% end %>
+        </div>
+     <% end %>
+  </article>
+</div>

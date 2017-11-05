@@ -1,0 +1,9 @@
+<h4>以下の内容で、送信する。</h4>
+
+<%= form_for(@blog) do |f| %>
+  <%= f.hidden_field :title  %>
+  <p>タイトル:<%= @blog.title %></p>
+  <%= f.hidden_field :content  %>
+  <p>本文:<%= @blog.content %></p>
+  <%= f.submit "登録する" %>
+<% end %>

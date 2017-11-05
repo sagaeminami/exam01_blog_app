@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get 'blogs/index'
-  
-  resources :blogs
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/',  to:'blogs#index'
+  patch '/blogs/:id' => 'blogs#update'
+  resources :favorites,only: [:create,:destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :users
+  resources :blogs do
+    collection do
+    get  'favorite'
+    post 'confirm'
+    end
+  end
 end
