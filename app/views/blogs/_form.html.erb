@@ -18,7 +18,13 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
+  <div class="field_image">
+    <%= f.label :"写真" %><br>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+   </div>
   <div class="actions">
     <%=f.submit 'next!' %>
   </div>
+
     <% end %>

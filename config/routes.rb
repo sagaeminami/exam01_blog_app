@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :contacts
+  if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   get '/',  to:'blogs#index'
   patch '/blogs/:id' => 'blogs#update'
   resources :favorites,only: [:create,:destroy]
