@@ -18,9 +18,8 @@ class BlogsController < ApplicationController
   end
 
   def confirm
-    # unless image.blank?
-      @blog = Blog.new(blog_params) # <=POSTされたパラメータを取得
-    # end
+    @blog = Blog.new(blog_params)
+    # render :new if @blog.image.url?
   end
 
 
@@ -35,12 +34,13 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    @blog.image.retrieve_from_cache!(params[:cache][:image])
-    if @blog.save
-      redirect_to blogs_path, notice:"ツイートしました！"
-    else
-      render 'new'
-    end
+    @blog.image.retrieve_from_cache!(params[:cache][:image]) unless (params[:cache][:image]).empty?
+      if @blog.save
+        BlogMailer.blog_mail(@blog).deliver  ##追記
+        redirect_to blogs_path, notice:"ツイートしました！"
+      else
+        render 'new'
+      end
   end
 
   def destroy

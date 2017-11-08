@@ -1,5 +1,5 @@
-class ContactMailer < ApplicationMailer
-  def contact_mail(blog)
+class BlogMailer < ApplicationMailer
+  def blog_mail(blog)
   @blog = blog
 
   mail to: "gw.feltmyheart@gmail.com",
