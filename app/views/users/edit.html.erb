@@ -1,6 +1,27 @@
-<%= form_for @user,:url => {:action => 'update'}, :html => {:multipart => true} do |f| %>
+<%= form_for (@user) do |f| %>
 
-  <%= f.file_field :image %><br>
-  <%= f.submit %>
 
+
+
+
+  <%= f.hidden_field :name %>
+
+
+
+  <%= f.hidden_field :email %>
+
+
+
+  <div class="field_image">
+  <%= f.label :"写真" %>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :image_cache %>
+  </div>
+
+  
+
+
+  <div class="actions">
+    <%=f.submit 'next!' %>
+  </div>
 <% end %>

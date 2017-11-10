@@ -1,7 +1,6 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @user.image_url %>
-</p>
+<%= form_for(@user) do |f| %>
+<%= image_tag @user.image.url %><br>
+<%end%>
