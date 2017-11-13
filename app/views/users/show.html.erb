@@ -3,4 +3,5 @@
 <p>メールアドレス: <%= @user.email %></p>
 <%= form_for(@user) do |f| %>
 <%= image_tag @user.image%><br>
+<p><%=link_to '画像を編集する', edit_user_path%>
 <%end%>
