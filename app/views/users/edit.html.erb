@@ -1,16 +1,10 @@
 <%= form_for (@user) do |f| %>
 
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
 
-
-
-
-  <%= f.hidden_field :name %>
-
-
-
-  <%= f.hidden_field :email %>
-
-
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
 
   <div class="field_image">
   <%= f.label :"写真" %>
